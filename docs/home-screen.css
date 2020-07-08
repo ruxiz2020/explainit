@@ -11,7 +11,7 @@ body {
   color: black;
   background-color: rgb(243,242,235);
   font-family: verdana, helvetica, arial, sans-serif;
-  font-size: 73%;  /* Enables font size scaling in MSIE */
+  font-size: 90%;  /* Enables font size scaling in MSIE */
   margin: 0;
   padding: 0;
 }
@@ -42,7 +42,7 @@ acronym, .titleTip {
 
 #header {
   color: inherit;
-  background-color: rgb(184,38,25);
+  background-color: #659EC7;
 }
 
 .headerTitle {
@@ -71,7 +71,7 @@ acronym, .titleTip {
 
 .subHeader {
   color: white;
-  background-color: black;
+  background-color: #686868;
   font-size: 109%;
   text-align: center;
   margin: 0;
@@ -80,7 +80,7 @@ acronym, .titleTip {
 
 .subHeader a {
   color: white;
-  background-color: black;
+  background-color: #686868;
   text-decoration: none;
   font-weight: bold;
   margin: 0;
@@ -103,7 +103,7 @@ acronym, .titleTip {
 
 .leftSideBar .sideBarTitle {
   color: rgb(64,64,64);
-  background-color: rgb(230,223,207);
+  background-color: #DFD7D1;
   font-weight: bold;
   margin: 0;
   padding: 0.8ex 1ex;
@@ -122,7 +122,7 @@ acronym, .titleTip {
 }
 
 .leftSideBar a {
-  color: rgb(166,140,83);
+  color: 	#8B4513;
   background-color: transparent;
   text-decoration: none;
 }
@@ -174,7 +174,7 @@ acronym, .titleTip {
 
 .rightSideBar .sideBarTitle {
   color: black;
-  background-color: rgb(230,223,207);
+  background-color: #DFD7D1;
   font-weight: bold;
   margin: 1.25ex 1ex;
   padding: 0.9ex 1ex;
@@ -209,6 +209,10 @@ acronym, .titleTip {
   text-decoration: underline;
 }
 
+.imageContainer .sklearnPlot {
+    float: left;
+}
+
 
 /* ##### Main Copy ##### */
 
@@ -236,7 +240,7 @@ acronym, .titleTip {
 }
 
 #main-copy a {
-  color: rgb(168,140,83);
+  color: #342211;
   background-color: transparent;
   text-decoration: underline;
 }

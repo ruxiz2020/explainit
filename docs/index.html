@@ -36,17 +36,11 @@
 
     <div id="header">
       <h1 class="headerTitle">
-        <a href="./index" title="Browse to homepage">home <span>Two</span></a>
+        <a href="./index" title="Browse to homepage">ExplainIt: <span>Compares different methods for Model Interpretation</span></a>
       </h1>
 
       <div class="subHeader">
         <span class="doNotDisplay">Navigation: </span>
-        <a href="./index.html">Products</a> |
-        <a href="./index.html">Solutions</a> |
-        <a href="./index.html">Store</a> |
-        <a href="./index.html">Support</a> |
-        <a href="./index.html">Contact Us</a> |
-        <a href="./index.html">About Us</a>
       </div>
     </div>
 
@@ -55,56 +49,16 @@
       <!-- ##### Left Sidebar ##### -->
 
       <div class="leftSideBar">
-        <p class="sideBarTitle">This Page</p>
+        <p class="sideBarTitle">Methods explored</p>
         <ul>
-          <li><a href="#introduction">Introduction</a></li>
-          <li><a href="#cross-browser" title="Improved cross-browser compatibility">Cross-browser</a></li>
-          <li><a href="#stylesheets" title="Modified stylesheets">Stylesheets</a></li>
-          <li><a href="#accessibility" title="Improved accessibility">Accessibility</a></li>
+          <li><a href="https://scikit-learn.org/stable/auto_examples/inspection/plot_permutation_importance.html">Sklearn Permutation Importance</a></li>
+          <li><a href="https://docs.h2o.ai/h2o/latest-stable/h2o-docs/data-science/gbm.html">Gradient Boosting Machine (GBM)</a></li>
+          <li><a href="https://github.com/slundberg/shap">SHAP</a></li>
+          <li><a href="https://github.com/oracle/Skater">Skater</a></li>
         </ul>
 
-        <p class="sideBarTitle">Branch Navigation</p>
-        <ul>
-          <li><a href="http://www.oswd.org/index.phtml">OSWD Home</a></li>
-          <li><a href="http://www.oswd.org/browse.php">Browse Designs</a></li>
-          <li><a href="http://www.oswd.org/userinfo.phtml?user=haran">haran&rsquo;s Designs</a></li>
-          <li><span class="thisPage" title="That's this page!">home Homepage</span></li>
-        </ul>
-
-        <p class="sideBarTitle">Comments</p>
-        <span class="sideBarText">
-          Comments and constructive criticisms are welcome
-          <a href="http://www.oswd.org/email.phtml?user=haran" title="Email form">via email</a>.
-        </span>
       </div>
 
-      <!-- ##### Right Sidebar ##### -->
-
-      <div class="rightSideBar">
-        <p class="sideBarTitle">News</p>
-
-        <div class="sideBarText"><strong>? May 03</strong><br />
-          Submitted revised version of home to <a href="http://www.oswd.org">OSWD</a></div>
-
-        <div class="sideBarText"><strong>3 Feb 03</strong><br />
-          Original version of home submitted</div>
-
-        <a href="./index.html" class="more">more news &raquo;</a>
-
-        <p class="sideBarTitle">Downloads</p>
-
-        <div class="sideBarText"><strong>Product Delta</strong><br />
-          <a href="./index.html">info</a>&nbsp;|&nbsp;<a href="./index.html">download</a></div>
-        <div class="sideBarText"><strong>Product Echo</strong><br />
-          <a href="./index.html">info</a>&nbsp;|&nbsp;<a href="./index.html">download</a></div>
-        <div class="sideBarText"><strong>Product Foxtrot</strong><br />
-          <a href="./index.html">info</a>&nbsp;|&nbsp;<a href="./index.html">download</a></div>
-
-        <p class="sideBarTitle">Validation</p>
-
-        <div class="sideBarText">Validate the <a href="http://validator.w3.org/check/referer">XHTML</a>
-          and <a href="http://jigsaw.w3.org/css-validator/check/referer">CSS</a> of this page.</div>
-      </div>
 
     </div>
 
@@ -112,31 +66,67 @@
 
     <div id="main-copy">
       <h1 id="introduction" style="border-top: none; padding-top: 0;">Introduction</h1>
-      <p>This is version two of home, a revision of the
-         <a href="http://www.oswd.org/userinfo.phtml?user=haran">original design</a> I submitted
-         to <a href="http://www.oswd.org"><acronym title="Open Source Web Design">OSWD</acronym></a>
-         in February 2003. Following is a summary of the major differences between this version and the
-         original.</p>
+      <p>
+        This module experiments several different methods to explain a ML model, and compares the performances.
+      </p>
 
-      <p>home was inspired by the homepage of <a href="http://www.activestate.com">ActiveState</a>, an
-         open-source application development company. The name
-         <span class="titleTip" title="home monster: a species of lizard">home</span> is a play on the
-         word <span class="titleTip" title="Komodo dragon: another species of lizard">Komodo</span>,
-         the name of one of ActiveState&rsquo;s products which is based on
-         <a href="http://www.mozilla.org">the Mozilla project</a>.</p>
+      <dt>Sklearn Permutation importance for feature evaluation </dt>
+      <p>
+        <a href="https://scikit-learn.org/stable/auto_examples/inspection/plot_permutation_importance.html">Permutation Importance</a>
+        If we calculate feature importance by using sklearn rf impurity-based feature importances,
+        that is by calling rf_model.feature_importances_ function, there are two limitations
+        (sklearn.ensemble.RandomForestClassifier Parameter, criterion{“gini”, “entropy”}, default=”gini”):
+        1. impurity-based importances are biased towards high cardinality features;
+        2. impurity-based importances are computed on training set statistics and therefore
+        do not reflect the ability of feature to be useful to make predictions that generalize to the test set
+        (when the model has enough capacity).
+        In Sklearn, using Permutation Importances as an alternative that can mitigate those limitations
+        of the impurity-based feature importance of random forests.
+        The permutation importance of a feature is calculated as follows.
+        First, a baseline metric, defined by scoring, is evaluated on a (potentially different)
+        dataset defined by the X. Next, a feature column from the validation set is permuted and the
+        metric is evaluated again. The permutation importance is defined to be the difference between
+        the baseline metric and metric from permutating the feature column.
+      </p>
+      <div class="image_sklearn">
+        <div class="imageContainer">
+        <div class="sklearnPlot">
+          <img src="images/rf_importance.png" alt="rf impurity-based importance" width="580" height="430">
+          </div>
+        </div>
 
-      <p>This template is marked up in
-         <acronym title="eXtensible HyperText Markup Language">XHTML</acronym> 1.0 Strict and styled
-         with <acronym title="Cascading Style Sheets">CSS</acronym>, allowing for greater compatibility
-         and transformability. The design does not use any tables (unlike
-         <a href="http://www.activestate.com" title="ActiveState's homepage">the design&rsquo;s
-         inspiration</a>) resulting in greater design flexibility and cleaner code.</p>
+        <div class="imageContainer">
+          <div class="sklearnPlot">
+          <img src="images/permutation_importance.png" alt="permutation importance" width="580" height="430">
+          </div>
+        </div>
+      </div>
 
-      <p>I hope you find this revision to your liking. You are free to use this design for
-         any purpose you wish &mdash; personal, commercial or otherwise &mdash; without any
-         obligation. If you publish a web site that&rsquo;s based on this template, please
-         <a href="http://www.oswd.org/email.phtml?user=haran" title="Email form">email me</a> your
-         site&rsquo;s <acronym title="Uniform Resource Identifier">URI</acronym>.</p>
+      <br clear="all" />
+      <dt>Feature Importance from GBM</dt>
+      <p>
+        <a href="https://docs.h2o.ai/h2o/latest-stable/h2o-docs/data-science/gbm.html">Gradient Boosting Machine (GBM)</a>
+        Gradient Boosting Machine (for Regression and Classification) is a forward learning ensemble method.
+        Variable importance is determined by calculating the relative influence of each variable:
+        whether that variable was selected to split on during the tree building process,
+        and how much the squared error (over all trees) improved (decreased) as a result.
+      </p>
+
+      <dt>SHAP (SHapley Additive exPlanations)</dt>
+      <p>
+        <a href="https://github.com/slundberg/shap">SHAP</a>
+        is a game theoretic approach to explain the output of any machine learning model.
+        It connects optimal credit allocation with local explanations using the classic Shapley values
+        from game theory and their related extensions.
+      </p>
+
+      <dt>Skater </dt>
+      <p>
+        <a href="https://github.com/oracle/Skater">Skater</a>
+        is an open source python library designed to demystify the learned structures of a black box model
+        both globally(inference on the basis of a complete data set) and locally(inference about an individual prediction).
+      </p>
+
 
       <h1 id="cross-browser">Improved Cross-browser Compatibility</h1>
       <p>I did not test version one of home in Opera before submitting it to OSWD. As a result, the
@@ -148,56 +138,50 @@
       <p>This means that people using <span class="titleTip" title="eg: Mozilla 1+, Opera 7+, Netscape 6+, Internet Explorer 6+">standards-compliant browsers</span>
          will see the same format and layout of your page.</p>
 
-      <h1 id="stylesheets">Modified Stylesheets</h1>
+      <h1 id="stylesheets">Cheat Sheet: 3 Decision Tree Splitting criterions</h1>
       <dl>
-        <dt>More comprehensive screen stylesheet</dt>
-        <dd>The improved cross-browser consistency is a result of home&rsquo;s more comprehensive screen
-            stylesheet. Major style parameters are explicitly defined in the stylesheet, resulting in
-            less dependence on browser-determined defaults and thus fewer rendering idiosyncrasies.</dd>
-        <dt>Removal of colour scheme stylesheet</dt>
-        <dd>I&rsquo;ve removed the separate colour scheme stylesheet found in the original version,
-          instead incorporating the colour definitions in the single screen stylesheet.</dd>
-        <dt>Addition of a print media stylesheet</dt>
-        <dd>home now has a print media stylesheet that styles the page in a format appropriate for
-            black and white printing. To see the effect of this stylesheet, select
-            <span class="smallCaps">print preview</span> from the <span class="smallCaps">file</span>
-            menu, or direct this page to a printer (NB: print only this frame if you are viewing this
-            template in a multi-frame document).</dd>
+        <dt>1. Gini Impurity</dt>
+        <dd>Gini impurity is a measure of how often a randomly chosen element
+        from the set would be incorrectly labeled if it was randomly labeled
+        according to the distribution of labels in the subset.</dd>
+        <img src="images/gini_impurity.png" alt="gini impurity expained" width="450" height="350">
+
+        <dt>2. Entropy</dt>
+        <dd>Another very popular way to split nodes in the decision tree is Entropy.
+        Entropy is the measure of Randomness in the system. </dd>
+
+
+        <dt>3. Variance</dt>
+        <dd>Gini Impurity and Entropy work pretty well for the classification scenario.
+          But what about regression? In the case of regression,
+          the most common split measure used is just the weighted variance of the nodes.
+          </dd>
       </dl>
 
-      <h1 id="accessibility">Improved Accessibility</h1>
-      <p>This version of home has improved accessibility features for people with impaired vision.
-         The template tentatively conforms to the <a href="http://www.w3.org/TR/WCAG10">
-         <acronym title="Web Content Accessibility Guidelines">WCAG</acronym> double A rating</a> and
-         <a href="http://www.access-board.gov/508.htm">&sect;&nbsp;508</a> guidelines for web content
-         accessibility. The relative simplicity of the template&rsquo;s underlying markup ensures that
-         your page can be easily transformed for rendering in aural, tactile (braille) and other
-         non-visual user agents.</p>
+      <h1 id="accessibility">Resources</h1>
 
-      <p>Additionally, the majority of document metrics (widths, lengths and spacings) are font-size
-         relative. This means that a user can increase the default font size of your page (using their
-         browser) without compromising it&rsquo;s layout.</p>
+      <ul>
+        <li><a href="https://www.kaggle.com/nareshbhat/health-care-data-set-on-heart-attack-possibility?select=heart.csv">
+          <b>Kaggle Dataset: Health care Data set on Heart attack possibility</b>
+          </a>
+        </li>
+
+        <li><a href="https://towardsdatascience.com/explainable-artificial-intelligence-part-3-hands-on-machine-learning-model-interpretation-e8ebe5afc608">
+          <b>Hands-on Machine Learning Model Interpretation</b>
+          </a>
+        </li>
+      </ul>
+
     </div>
 
     <!-- ##### Footer ##### -->
 
     <div id="footer">
-      <div class="doNotPrint">
-        <a href="./index.html">Tell a Friend</a> |
-        <a href="./index.html">Privacy Policy</a> |
-        <a href="./index.html">Site Map</a> |
-        <a href="./index.html">Feedback</a> |
-        <a href="./index.html">Help</a>
-        <br />
-		<!--This theme is free for distriubtion,  so long as  link to openwebdesing.org and florida-villa.com  stay on the theme-->
-    <span class="nocopyright">Courtesy <a href="http://www.openwebdesign.org" target="_blank">Open
-    Web Design</a><a href="http://www.dubaiapartments.biz" target="_blank"><img src="spacer.gif" width="5" height="5" border="0"/></a>Thanks
-    to <a href="http://www.florida-villa.com" target="_blank">Florida Vacation Homes</a> </span></div>
 
       <div>
-        Copyright &copy; 2003, Your Company |
-        Modified on 2003-May-03 by
-          <a href="http://www.oswd.org/email.phtml?user=haran" title="Email the author">haran</a>
+        Copyright &copy; 2020, explainit |
+        Modified on 2020-July-07 by
+          <a href="ruxiz2005@gmail.com" title="Email the author">zruxi</a>
       </div>
     </div>
   </body>
