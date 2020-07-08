@@ -41,6 +41,7 @@
 
       <div class="subHeader">
         <span class="doNotDisplay">Navigation: </span>
+        <a href="https://github.com/ruxiz2020/explainit">GitHub Repo</a>
       </div>
     </div>
 
@@ -52,7 +53,7 @@
         <p class="sideBarTitle">Methods explored</p>
         <ul>
           <li><a href="https://scikit-learn.org/stable/auto_examples/inspection/plot_permutation_importance.html">Sklearn Permutation Importance</a></li>
-          <li><a href="https://docs.h2o.ai/h2o/latest-stable/h2o-docs/data-science/gbm.html">Gradient Boosting Machine (GBM)</a></li>
+          <li><a href="https://marcotcr.github.io/lime/">LIME</a></li>
           <li><a href="https://github.com/slundberg/shap">SHAP</a></li>
           <li><a href="https://github.com/oracle/Skater">Skater</a></li>
         </ul>
@@ -94,25 +95,31 @@
       <div class="image_sklearn">
         <div class="imageContainer">
         <div class="sklearnPlot">
-          <img src="images/rf_importance.png" alt="rf impurity-based importance" width="590" height="450">
+          <img src="images/rf_importance.png" alt="rf impurity-based importance" width="580" height="450">
           </div>
         </div>
 
         <div class="imageContainer">
           <div class="sklearnPlot">
-          <img src="images/permutation_importance.png" alt="permutation importance" width="590" height="450">
+          <img src="images/permutation_importance.png" alt="permutation importance" width="580" height="450">
           </div>
         </div>
       </div>
 
       <br clear="all" />
-      <dt>Feature Importance from GBM</dt>
+
+      <dt>LIME</dt>
       <p>
-        <a href="https://docs.h2o.ai/h2o/latest-stable/h2o-docs/data-science/gbm.html">Gradient Boosting Machine (GBM)</a>
-        Gradient Boosting Machine (for Regression and Classification) is a forward learning ensemble method.
-        Variable importance is determined by calculating the relative influence of each variable:
-        whether that variable was selected to split on during the tree building process,
-        and how much the squared error (over all trees) improved (decreased) as a result.
+        <a href="https://github.com/marcotcr/lime">LIME</a>
+
+        is a novel explanation technique that explains the predictions of any classifier
+        in an interpretable and faithful manner, by learning an interpretable model locally around the prediction.
+        LIME can be used to Explain individual predictions, as known as "<span style="color:red;">LOCAL INTERPRETABLE
+        MODEL-AGNOSTIC EXPLANATIONS</span>". "A model predicts that a patient has the flu, and LIME highlights
+        the symptoms in the patient’s history that led to the prediction. Sneeze and headache are portrayed as
+        contributing to the “flu” prediction, while “no fatigue” is evidence against it. With these, a doctor can make
+        an informed decision about whether to trust the model’s prediction." (cited from paper “Why Should I Trust You?”
+        Explaining the Predictions of Any Classifier)
       </p>
 
       <dt>SHAP (SHapley Additive exPlanations)</dt>
@@ -186,10 +193,10 @@
 
       <dt>SKATER - Global Interpretations</dt>
       <div class="imageContainer">
-        <img src="images/skater_global.png" alt="SKATER - Global Interpretations" width="820" height="320">
+        <img src="images/skater_global.png" alt="SKATER - Global Interpretations" width="780" height="320">
       </div>
       <div class="imageContainer">
-        <img src="images/skater_global_2.png" alt="SKATER - Global Interpretations 2" width="890" height="350">
+        <img src="images/skater_global_2.png" alt="SKATER - Global Interpretations 2" width="780" height="350">
       </div>
 
       <dt>SKATER visualization on feature interactions</dt>
