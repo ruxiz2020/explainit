@@ -28,6 +28,13 @@ acronym:after, .titleTip:after {  /* Prints titles after the acronyms/titletips.
   padding-left: 1ex;
 }
 
+table,
+table td {
+    font-weight: bold;
+    background-color: #fff;
+    border-collapse: separate; /* This line */
+}
+
 .doNotPrint {
   display: none !important;
 }

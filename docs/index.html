@@ -75,11 +75,14 @@
         <a href="https://scikit-learn.org/stable/auto_examples/inspection/plot_permutation_importance.html">Permutation Importance</a>
         If we calculate feature importance by using sklearn rf impurity-based feature importances,
         that is by calling rf_model.feature_importances_ function, there are two limitations
-        (sklearn.ensemble.RandomForestClassifier Parameter, criterion{“gini”, “entropy”}, default=”gini”):
+        (<span style="color:red;">sklearn.ensemble.RandomForestClassifier</span> Parameter,
+        criterion{“gini”, “entropy”}, default=”gini”):
+        <span style="font-style:italic;color:blue;">
         1. impurity-based importances are biased towards high cardinality features;
         2. impurity-based importances are computed on training set statistics and therefore
         do not reflect the ability of feature to be useful to make predictions that generalize to the test set
         (when the model has enough capacity).
+        </span>
         In Sklearn, using Permutation Importances as an alternative that can mitigate those limitations
         of the impurity-based feature importance of random forests.
         The permutation importance of a feature is calculated as follows.
@@ -91,13 +94,13 @@
       <div class="image_sklearn">
         <div class="imageContainer">
         <div class="sklearnPlot">
-          <img src="images/rf_importance.png" alt="rf impurity-based importance" width="580" height="430">
+          <img src="images/rf_importance.png" alt="rf impurity-based importance" width="590" height="450">
           </div>
         </div>
 
         <div class="imageContainer">
           <div class="sklearnPlot">
-          <img src="images/permutation_importance.png" alt="permutation importance" width="580" height="430">
+          <img src="images/permutation_importance.png" alt="permutation importance" width="590" height="450">
           </div>
         </div>
       </div>
@@ -123,20 +126,80 @@
       <dt>Skater </dt>
       <p>
         <a href="https://github.com/oracle/Skater">Skater</a>
-        is an open source python library designed to demystify the learned structures of a black box model
+
+        Model Interpretation could be enabled in multiple different ways, but at a highlevel it could be broadly categorized as,
+
+        1. post hoc interpretation: Given a black box model trained to solve a supervised learning problem(X –> Y,
+          where X is the input and Y is the output), post-hoc interpretation can be thought of as a function(f)
+          ‘g’ with input data(D) and a predictive model.
+          The function ‘g’ returns a visual or textual representation which helps in understanding the inner
+          working of the model or why a certain outcome is more favorable than the other.
+          It could also be called inspecting the black box or reverse engineering.
+        2. natively interpretable models: Given a supervised learning problem,
+        the predictive model(explanator function) has a transparent design and is
+        interpretable both globally and locally without any further explanations.
+
+        Skater is an open source python library designed to demystify the learned structures of a black box model
         both globally(inference on the basis of a complete data set) and locally(inference about an individual prediction).
       </p>
+      <p>
+      <span style="color:red;">pip install skater failed</span></span>,
+      and git clone repo and install from local worked for me. Also, fixed couple other issues including
+      install dependencies such as <span style="color:blue;">brew install graphviz</span></span>
+      </p>
 
+        </p>
+      </p>
+        </p>
+      </p>
+      <table >
+      <thead><tr>
+        <th>Scope of Interpretation</th>
+        <th>Algorithms</th>
+        </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>Global Interpretation</td>
+        <td>Model agnostic Feature Importance</td>
+      </tr>
+      <tr>
+        <td>Global Interpretation</td>
+        <td>Model agnostic Partial Dependence Plots</td>
+      </tr>
+      <tr>
+        <td>Local Interpretation</td>
+        <td>Local Interpretable Model Explanation(LIME)</td>
+      </tr>
+      <tr>
+        <td>Local Interpretation</td>
+        <td>DNNs:
+        Layer-wise Relevance Propagation (e-LRP): image;
+        Integrated Gradient: image and text;</td>
+      </tr>
+      <tr>
+        <td>Global and Local Interpretation</td>
+        <td>Scalable Bayesian Rule Lists; Tree Surrogates;</td>
+      </tr>
+      </tbody>
+      </table>
 
-      <h1 id="cross-browser">Improved Cross-browser Compatibility</h1>
-      <p>I did not test version one of home in Opera before submitting it to OSWD. As a result, the
-         original does not render properly in that browser. In contrast, this version of home has been
-         fully tested in <a href="http://www.opera.com">Opera</a> (7.01), Gecko
-         (<a href="http://www.mozilla.org">Mozilla</a> 1.3) and Internet Explorer (6.0) for consistent
-         rendering.</p>
+      <dt>SKATER - Global Interpretations</dt>
+      <div class="imageContainer">
+        <img src="images/skater_global.png" alt="SKATER - Global Interpretations" width="820" height="320">
+      </div>
+      <div class="imageContainer">
+        <img src="images/skater_global_2.png" alt="SKATER - Global Interpretations 2" width="890" height="350">
+      </div>
 
-      <p>This means that people using <span class="titleTip" title="eg: Mozilla 1+, Opera 7+, Netscape 6+, Internet Explorer 6+">standards-compliant browsers</span>
-         will see the same format and layout of your page.</p>
+      <dt>SKATER visualization on feature interactions</dt>
+      <div class="imageContainer">
+        <img src="images/interaction.png" alt="SKATER - Global Interpretations" width="1020" height="450">
+      </div>
+
+      <h1 id="cross-browser">Future Works</h1>
+      <p>Placeholder</p>
+
 
       <h1 id="stylesheets">Cheat Sheet: 3 Decision Tree Splitting criterions</h1>
       <dl>
